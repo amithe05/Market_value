@@ -54,16 +54,14 @@ class _HomescreenState extends State<Homescreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextField(
-             
               controller: _searchController,
               onChanged: (value) {
                 _fetchCompanyData(value);
               },
               decoration: const InputDecoration(
-                labelText: 'Search',
-                prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder()
-              ),
+                  labelText: 'Search',
+                  prefixIcon: Icon(Icons.search),
+                  border: OutlineInputBorder()),
             ),
           ),
           Expanded(
@@ -78,6 +76,8 @@ class _HomescreenState extends State<Homescreen> {
                     icon: const Icon(Icons.add),
                     onPressed: () {
                       _addToWatchlist(company);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text("Added to watchlist")));
                     },
                   ),
                 );
@@ -114,13 +114,17 @@ class _HomescreenState extends State<Homescreen> {
 class Company {
   final String symbol;
   final String name;
+    final String price;
 
-  Company({required this.symbol, required this.name});
+
+  Company({required this.symbol, required this.name,required this.price});
 
   factory Company.fromJson(Map<String, dynamic> json) {
+    print(json);
     return Company(
       symbol: json['1. symbol'],
       name: json['2. name'],
+      price:'arro'
     );
   }
 }

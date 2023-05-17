@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:market_view/homescreen.dart';
 import 'package:market_view/navigation.dart';
 
 void main() {
